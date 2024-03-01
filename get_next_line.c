@@ -67,8 +67,6 @@ char	*get_next_line(int fd)
 	char		*line;
 	char		*buffer;
 
-	if (!fd)
-		return (NULL);
 	buffer = (char *)malloc(BUFFER_SIZE + 1);
 	if (BUFFER_SIZE <= 0 || fd < 0 || read(fd, 0, 0) < 0)
 	{
