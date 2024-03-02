@@ -6,7 +6,7 @@
 /*   By: iscourr <i_courr@hotmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 10:31:14 by iscourr           #+#    #+#             */
-/*   Updated: 2024/03/01 10:46:06 by iscourr          ###   ########.fr       */
+/*   Updated: 2024/03/02 13:06:54 by iscourr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ char	*ft_freeline(char *string)
 	i = 0;
 	while (string[i] && string[i] != '\n')
 		i++;
-	if (string[i] == '\0' || string[1] == '\0')
+	if (string[i] == '\0' || string[i + 1] == '\0')
 		return (NULL);
 	line = ft_substr(string, i + 1, ft_strlen(string) - i);
 	if (*line == 0)
@@ -68,6 +68,12 @@ char	*get_next_line(int fd)
 	char		*buffer;
 
 	buffer = (char *)malloc(BUFFER_SIZE + 1);
+	// if (!buffer)
+	// {
+	// 	free(buffer);
+	// 	buffer = NULL;
+	// 	return (NULL);
+	// }
 	if (BUFFER_SIZE <= 0 || fd < 0 || read(fd, 0, 0) < 0)
 	{
 		free(string);

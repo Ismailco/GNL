@@ -6,13 +6,13 @@
 /*   By: iscourr <i_courr@hotmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 10:25:16 by iscourr           #+#    #+#             */
-/*   Updated: 2024/03/01 10:49:40 by iscourr          ###   ########.fr       */
+/*   Updated: 2024/03/02 12:57:44 by iscourr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*ft_strchr(const char *s, int c)
+char	*ft_strchr(char *s, int c)
 {
 	while (*s != (char)c)
 	{
@@ -22,7 +22,7 @@ char	*ft_strchr(const char *s, int c)
 	return ((char *)s);
 }
 
-char	*ft_strdup(const char *s1)
+char	*ft_strdup(char *s1)
 {
 	char	*s;
 	int		i;
@@ -42,7 +42,7 @@ char	*ft_strdup(const char *s1)
 	return (s);
 }
 
-size_t	ft_strlen(const char *s)
+size_t	ft_strlen(char *s)
 {
 	size_t	i;
 
@@ -52,7 +52,7 @@ size_t	ft_strlen(const char *s)
 	return (i);
 }
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_substr(char *s, unsigned int start, size_t len)
 {
 	size_t	i;
 	char	*sub;
@@ -79,7 +79,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	return (sub);
 }
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(char *s1, char *s2)
 {
 	char	*res;
 	int		i;
@@ -104,19 +104,3 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	res[j] = '\0';
 	return (res);
 }
-
-// size_t ft_strlcpy(char *dst, const char *src, size_t dstsize)
-// {
-// 	size_t i;
-
-// 	i = 0;
-// 	if (dstsize == 0)
-// 		return (ft_strlen(src));
-// 	while (dstsize - 1 > i && src[i])
-// 	{
-// 		dst[i] = src[i];
-// 		i++;
-// 	}
-// 	dst[i] = '\0';
-// 	return (ft_strlen(src));
-// }
