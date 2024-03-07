@@ -6,7 +6,7 @@
 /*   By: iscourr <i_courr@hotmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 10:31:14 by iscourr           #+#    #+#             */
-/*   Updated: 2024/03/07 19:52:01 by iscourr          ###   ########.fr       */
+/*   Updated: 2024/03/07 20:00:13 by iscourr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ char	*ft_freeline(char *string)
 
 char	*get_next_line(int fd)
 {
-	static char	*strings[256];
+	static char	*strings[2565];
 	char		*line;
 	char		*buffer;
 
