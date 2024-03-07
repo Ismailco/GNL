@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iscourr <i_courr@hotmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 10:31:14 by iscourr           #+#    #+#             */
-/*   Updated: 2024/03/07 19:53:19 by iscourr          ###   ########.fr       */
+/*   Updated: 2024/03/07 19:52:01 by iscourr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*ft_readfile(int fd, char *string, char *buffer)
 {
@@ -63,26 +63,26 @@ char	*ft_freeline(char *string)
 
 char	*get_next_line(int fd)
 {
-	static char	*string;
+	static char	*strings[256];
 	char		*line;
 	char		*buffer;
 
 	buffer = (char *)malloc(BUFFER_SIZE + 1);
 	if (BUFFER_SIZE <= 0 || fd < 0 || read(fd, 0, 0) < 0)
 	{
-		free(string);
+		free(strings[fd]);
 		free(buffer);
 		buffer = NULL;
-		string = NULL;
+		strings[fd] = NULL;
 		return (NULL);
 	}
 	if (!buffer)
 		return (NULL);
-	line = ft_readfile(fd, string, buffer);
+	line = ft_readfile(fd, strings[fd], buffer);
 	free(buffer);
 	buffer = NULL;
 	if (!line)
 		return (NULL);
-	string = ft_freeline(line);
+	strings[fd] = ft_freeline(line);
 	return (line);
 }
