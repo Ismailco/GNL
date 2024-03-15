@@ -6,7 +6,7 @@
 /*   By: iscourr <i_courr@hotmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 10:31:14 by iscourr           #+#    #+#             */
-/*   Updated: 2024/03/07 19:53:19 by iscourr          ###   ########.fr       */
+/*   Updated: 2024/03/11 12:26:32 by iscourr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ char	*ft_readfile(int fd, char *string, char *buffer)
 	return (string);
 }
 
-char	*ft_freeline(char *string)
+char	*ft_returnline(char *string)
 {
 	char	*line;
 	int		i;
@@ -67,15 +67,15 @@ char	*get_next_line(int fd)
 	char		*line;
 	char		*buffer;
 
-	buffer = (char *)malloc(BUFFER_SIZE + 1);
-	if (BUFFER_SIZE <= 0 || fd < 0 || read(fd, 0, 0) < 0)
+	if (fd < 0)
+		return (NULL);
+	if (BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
 	{
 		free(string);
-		free(buffer);
-		buffer = NULL;
 		string = NULL;
 		return (NULL);
 	}
+	buffer = (char *)malloc(BUFFER_SIZE + 1);
 	if (!buffer)
 		return (NULL);
 	line = ft_readfile(fd, string, buffer);
@@ -83,6 +83,6 @@ char	*get_next_line(int fd)
 	buffer = NULL;
 	if (!line)
 		return (NULL);
-	string = ft_freeline(line);
+	string = ft_returnline(line);
 	return (line);
 }

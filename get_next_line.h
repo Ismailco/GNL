@@ -6,7 +6,7 @@
 /*   By: iscourr <i_courr@hotmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 10:31:24 by iscourr           #+#    #+#             */
-/*   Updated: 2024/03/02 12:56:26 by iscourr          ###   ########.fr       */
+/*   Updated: 2024/03/10 12:06:06 by iscourr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define GET_NEXT_LINE_H
 
 # include <unistd.h>
-# include <fcntl.h>
 # include <stdlib.h>
 
 # ifndef BUFFER_SIZE

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: iscourr <i_courr@hotmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/01 10:31:14 by iscourr           #+#    #+#             */
-/*   Updated: 2024/03/07 20:00:13 by iscourr          ###   ########.fr       */
+/*   Created: 2024/03/08 09:11:44 by iscourr           #+#    #+#             */
+/*   Updated: 2024/03/11 12:25:53 by iscourr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ char	*ft_readfile(int fd, char *string, char *buffer)
 	return (string);
 }
 
-char	*ft_freeline(char *string)
+char	*ft_returnline(char *string)
 {
 	char	*line;
 	int		i;
@@ -63,19 +63,19 @@ char	*ft_freeline(char *string)
 
 char	*get_next_line(int fd)
 {
-	static char	*strings[2565];
+	static char	*strings[1024];
 	char		*line;
 	char		*buffer;
 
-	buffer = (char *)malloc(BUFFER_SIZE + 1);
-	if (BUFFER_SIZE <= 0 || fd < 0 || read(fd, 0, 0) < 0)
+	if (fd < 0)
+		return (NULL);
+	if (BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
 	{
 		free(strings[fd]);
-		free(buffer);
-		buffer = NULL;
 		strings[fd] = NULL;
 		return (NULL);
 	}
+	buffer = (char *)malloc(BUFFER_SIZE + 1);
 	if (!buffer)
 		return (NULL);
 	line = ft_readfile(fd, strings[fd], buffer);
@@ -83,6 +83,6 @@ char	*get_next_line(int fd)
 	buffer = NULL;
 	if (!line)
 		return (NULL);
-	strings[fd] = ft_freeline(line);
+	strings[fd] = ft_returnline(line);
 	return (line);
 }
